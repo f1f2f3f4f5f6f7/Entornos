@@ -22,7 +22,7 @@ public class UsuarioServicio {
     }
     
     // Obtener usuario por ID
-    public Optional<Usuario> obtenerUsuarioPorId(Long id) {
+    public Optional<Usuario> obtenerUsuarioPorId(Integer id) {
         return usuarioRepositorio.findById(id);
     }
     
@@ -67,7 +67,7 @@ public class UsuarioServicio {
     }
     
     // Actualizar usuario
-    public Usuario actualizarUsuario(Long id, Usuario usuarioActualizado) {
+    public Usuario actualizarUsuario(Integer id, Usuario usuarioActualizado) {
         Usuario usuarioExistente = usuarioRepositorio.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + id));
         
@@ -101,7 +101,7 @@ public class UsuarioServicio {
     }
     
     // Eliminar usuario por ID
-    public void eliminarUsuario(Long id) {
+    public void eliminarUsuario(Integer id) {
         if (!usuarioRepositorio.existsById(id)) {
             throw new RuntimeException("Usuario no encontrado con ID: " + id);
         }
@@ -124,7 +124,7 @@ public class UsuarioServicio {
     }
     
     // Obtener usuarios por tipo de documento
-    public List<Usuario> obtenerUsuariosPorTipoDocumento(Long idTipoDocumento) {
+    public List<Usuario> obtenerUsuariosPorTipoDocumento(Integer idTipoDocumento) {
         return usuarioRepositorio.findByIdTipoDocumento(idTipoDocumento);
     }
     
@@ -144,7 +144,7 @@ public class UsuarioServicio {
     }
     
     // Contar usuarios por tipo de documento
-    public long contarUsuariosPorTipoDocumento(Long idTipoDocumento) {
+    public long contarUsuariosPorTipoDocumento(Integer idTipoDocumento) {
         return usuarioRepositorio.countByIdTipoDocumento(idTipoDocumento);
     }
     

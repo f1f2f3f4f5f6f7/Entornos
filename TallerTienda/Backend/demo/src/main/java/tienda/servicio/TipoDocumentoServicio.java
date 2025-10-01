@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+
+
+
 @Service
 @Transactional
 public class TipoDocumentoServicio {
@@ -26,8 +29,7 @@ public class TipoDocumentoServicio {
         return tipoDocumentoRepositorio.findAllOrderByTipo();
     }
     
-    // Obtener tipo de documento por ID
-    public Optional<Tipodocumento> obtenerTipoDocumentoPorId(Long id) {
+    public Optional<Tipodocumento> obtenerTipoDocumentoPorId(Integer id) {
         return tipoDocumentoRepositorio.findById(id);
     }
     
@@ -57,7 +59,7 @@ public class TipoDocumentoServicio {
     }
     
     // Actualizar tipo de documento
-    public Tipodocumento actualizarTipoDocumento(Long id, Tipodocumento tipoDocumentoActualizado) {
+    public Tipodocumento actualizarTipoDocumento(Integer id, Tipodocumento tipoDocumentoActualizado) {
         Tipodocumento tipoDocumentoExistente = tipoDocumentoRepositorio.findById(id)
                 .orElseThrow(() -> new RuntimeException("Tipo de documento no encontrado con ID: " + id));
         
@@ -74,7 +76,7 @@ public class TipoDocumentoServicio {
     }
     
     // Eliminar tipo de documento por ID
-    public void eliminarTipoDocumento(Long id) {
+    public void eliminarTipoDocumento(Integer id) {
         if (!tipoDocumentoRepositorio.existsById(id)) {
             throw new RuntimeException("Tipo de documento no encontrado con ID: " + id);
         }
@@ -130,7 +132,7 @@ public class TipoDocumentoServicio {
     }
     
     // Verificar si un tipo de documento puede ser eliminado (no tiene usuarios asociados)
-    public boolean puedeEliminarTipoDocumento(Long id) {
+    public boolean puedeEliminarTipoDocumento(Integer id) {
         return tipoDocumentoRepositorio.countUsuariosByTipoDocumento().stream()
                 .noneMatch(estadistica -> estadistica[0].equals(tipoDocumentoRepositorio.findById(id).orElse(null).getTipo()));
     }

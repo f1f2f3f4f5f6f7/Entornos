@@ -1,0 +1,15 @@
+services:
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: tienda_backend
+    ports:
+      - "8094:8094"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:6543/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres.twcwqpyutdeqnslyaynl
+      - SPRING_DATASOURCE_PASSWORD=0105
+      - SERVER_PORT=8094
+      - TZ=America/Bogota
+    restart: unless-stopped

@@ -32,7 +32,7 @@ public class UsuarioControlador {
     
     // Obtener usuario por ID
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
+    public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Integer id) {
         try {
             Optional<Usuario> usuario = usuarioServicio.obtenerUsuarioPorId(id);
             return usuario.map(ResponseEntity::ok)
@@ -95,7 +95,7 @@ public class UsuarioControlador {
     
     // Actualizar usuario
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizarUsuario(@PathVariable Long id, @Valid @RequestBody Usuario usuario) {
+    public ResponseEntity<?> actualizarUsuario(@PathVariable Integer id, @Valid @RequestBody Usuario usuario) {
         try {
             Usuario usuarioActualizado = usuarioServicio.actualizarUsuario(id, usuario);
             return ResponseEntity.ok(usuarioActualizado);
@@ -109,7 +109,7 @@ public class UsuarioControlador {
     
     // Eliminar usuario
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarUsuario(@PathVariable Long id) {
+    public ResponseEntity<?> eliminarUsuario(@PathVariable Integer id) {
         try {
             usuarioServicio.eliminarUsuario(id);
             return ResponseEntity.ok("Usuario eliminado correctamente");
@@ -156,7 +156,7 @@ public class UsuarioControlador {
     
     // Obtener usuarios por tipo de documento
     @GetMapping("/tipo-documento/{idTipoDocumento}")
-    public ResponseEntity<List<Usuario>> obtenerUsuariosPorTipoDocumento(@PathVariable Long idTipoDocumento) {
+    public ResponseEntity<List<Usuario>> obtenerUsuariosPorTipoDocumento(@PathVariable Integer idTipoDocumento) {
         try {
             List<Usuario> usuarios = usuarioServicio.obtenerUsuariosPorTipoDocumento(idTipoDocumento);
             return ResponseEntity.ok(usuarios);
@@ -210,7 +210,7 @@ public class UsuarioControlador {
     
     // Contar usuarios por tipo de documento
     @GetMapping("/contar/tipo-documento/{idTipoDocumento}")
-    public ResponseEntity<Long> contarUsuariosPorTipoDocumento(@PathVariable Long idTipoDocumento) {
+    public ResponseEntity<Long> contarUsuariosPorTipoDocumento(@PathVariable Integer idTipoDocumento) {
         try {
             long cantidad = usuarioServicio.contarUsuariosPorTipoDocumento(idTipoDocumento);
             return ResponseEntity.ok(cantidad);

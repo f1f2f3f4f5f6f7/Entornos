@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
+public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {
     
     // Buscar usuario por nombre de usuario
     Optional<Usuario> findByNombreUsuario(String nombreUsuario);
@@ -31,7 +31,7 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
     boolean existsByNumeroDocumento(String numeroDocumento);
     
     // Buscar usuarios por tipo de documento
-    List<Usuario> findByIdTipoDocumento(Long idTipoDocumento);
+    List<Usuario> findByIdTipoDocumento(Integer idTipoDocumento);
     
     // Buscar usuarios por nombre (búsqueda parcial)
     List<Usuario> findByNombreContainingIgnoreCase(String nombre);
@@ -46,9 +46,10 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
     
     // Consulta personalizada para contar usuarios por tipo de documento
     @Query("SELECT COUNT(u) FROM Usuario u WHERE u.idTipoDocumento = :idTipoDocumento")
-    long countByIdTipoDocumento(@Param("idTipoDocumento") Long idTipoDocumento);
+    long countByIdTipoDocumento(@Param("idTipoDocumento") Integer idTipoDocumento);
     
     // Consulta personalizada para buscar usuarios con email que contenga un dominio específico
     @Query("SELECT u FROM Usuario u WHERE u.email LIKE %:dominio%")
     List<Usuario> findByEmailContainingDomain(@Param("dominio") String dominio);
 } 
+

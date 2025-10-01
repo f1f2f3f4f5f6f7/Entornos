@@ -43,7 +43,7 @@ public class TipoDocumentoControlador {
     
     // Obtener tipo de documento por ID
     @GetMapping("/{id}")
-    public ResponseEntity<Tipodocumento> obtenerTipoDocumentoPorId(@PathVariable Long id) {
+    public ResponseEntity<Tipodocumento> obtenerTipoDocumentoPorId(@PathVariable Integer id) {
         try {
             Optional<Tipodocumento> tipoDocumento = tipoDocumentoServicio.obtenerTipoDocumentoPorId(id);
             return tipoDocumento.map(ResponseEntity::ok)
@@ -94,7 +94,7 @@ public class TipoDocumentoControlador {
     
     // Actualizar tipo de documento
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizarTipoDocumento(@PathVariable Long id, @Valid @RequestBody Tipodocumento tipoDocumento) {
+    public ResponseEntity<?> actualizarTipoDocumento(@PathVariable Integer id, @Valid @RequestBody Tipodocumento tipoDocumento) {
         try {
             Tipodocumento tipoDocumentoActualizado = tipoDocumentoServicio.actualizarTipoDocumento(id, tipoDocumento);
             return ResponseEntity.ok(tipoDocumentoActualizado);
@@ -108,7 +108,7 @@ public class TipoDocumentoControlador {
     
     // Eliminar tipo de documento
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarTipoDocumento(@PathVariable Long id) {
+    public ResponseEntity<?> eliminarTipoDocumento(@PathVariable Integer id) {
         try {
             // Verificar si se puede eliminar
             if (!tipoDocumentoServicio.puedeEliminarTipoDocumento(id)) {
@@ -205,7 +205,7 @@ public class TipoDocumentoControlador {
     
     // Verificar si se puede eliminar un tipo de documento
     @GetMapping("/puede-eliminar/{id}")
-    public ResponseEntity<Boolean> puedeEliminarTipoDocumento(@PathVariable Long id) {
+    public ResponseEntity<Boolean> puedeEliminarTipoDocumento(@PathVariable Integer id) {
         try {
             boolean puedeEliminar = tipoDocumentoServicio.puedeEliminarTipoDocumento(id);
             return ResponseEntity.ok(puedeEliminar);
@@ -214,3 +214,7 @@ public class TipoDocumentoControlador {
         }
     }
 } 
+
+
+
+

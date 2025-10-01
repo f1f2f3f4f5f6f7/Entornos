@@ -12,11 +12,11 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     
     @NotNull
     @Column(name = "idtipodocumento", nullable = false)
-    private Long idTipoDocumento;
+    private Integer idTipoDocumento;
     
     @NotBlank
     @Size(max = 30)
@@ -47,10 +47,10 @@ public class Cliente {
     public Cliente() {}
     
     // Getters y setters básicos
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public Long getIdTipoDocumento() { return idTipoDocumento; }
-    public void setIdTipoDocumento(Long idTipoDocumento) { this.idTipoDocumento = idTipoDocumento; }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public Integer getIdTipoDocumento() { return idTipoDocumento; }
+    public void setIdTipoDocumento(Integer idTipoDocumento) { this.idTipoDocumento = idTipoDocumento; }
     public String getNumeroDocumento() { return numeroDocumento; }
     public void setNumeroDocumento(String numeroDocumento) { this.numeroDocumento = numeroDocumento; }
     public String getDireccion() { return direccion; }

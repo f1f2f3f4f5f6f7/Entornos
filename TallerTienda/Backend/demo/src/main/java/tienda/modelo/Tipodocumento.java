@@ -12,7 +12,7 @@ public class Tipodocumento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     
     @NotBlank(message = "El tipo de documento es obligatorio")
     @Size(max = 50, message = "El tipo de documento no puede exceder 50 caracteres")
@@ -36,17 +36,17 @@ public class Tipodocumento {
     }
     
     // Constructor completo
-    public Tipodocumento(Long id, String tipo) {
+    public Tipodocumento(Integer id, String tipo) {
         this.id = id;
         this.tipo = tipo;
     }
     
     // Getters y Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
     
-    public void setId(Long id) {
+        public void setId(Integer id) {
         this.id = id;
     }
     

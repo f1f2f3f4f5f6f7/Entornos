@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TipoDocumentoRepositorio extends JpaRepository<Tipodocumento, Long> {
+public interface TipoDocumentoRepositorio extends JpaRepository<Tipodocumento, Integer> {
     
     // Buscar tipo de documento por tipo exacto
     Optional<Tipodocumento> findByTipo(String tipo);

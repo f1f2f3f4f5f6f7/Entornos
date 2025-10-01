@@ -13,11 +13,11 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     
     @NotNull(message = "El tipo de documento es obligatorio")
     @Column(name = "idtipodocumento", nullable = false)
-    private Long idTipoDocumento;
+    private Integer idTipoDocumento;
     
     @NotBlank(message = "El número de documento es obligatorio")
     @Size(max = 40, message = "El número de documento no puede exceder 40 caracteres")
@@ -50,7 +50,7 @@ public class Usuario {
     }
     
     // Constructor con todos los parámetros
-    public Usuario(Long idTipoDocumento, String numeroDocumento, String email, 
+    public Usuario(Integer idTipoDocumento, String numeroDocumento, String email, 
                    String nombre, String password, String nombreUsuario) {
         this.idTipoDocumento = idTipoDocumento;
         this.numeroDocumento = numeroDocumento;
@@ -61,19 +61,19 @@ public class Usuario {
     }
     
     // Getters y Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
     
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     
-    public Long getIdTipoDocumento() {
+    public Integer getIdTipoDocumento() {
         return idTipoDocumento;
     }
     
-    public void setIdTipoDocumento(Long idTipoDocumento) {
+    public void setIdTipoDocumento(Integer idTipoDocumento) {
         this.idTipoDocumento = idTipoDocumento;
     }
     
